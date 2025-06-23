@@ -8,8 +8,10 @@ export default function LoginPage() {
   const checkPassword = (e) => {
     e.preventDefault();
     if (password === '12345') {
-      localStorage.setItem('authorized', 'true');
-      router.push('/');
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('authorized', 'true');
+        router.push('/');
+      }
     } else {
       alert('Incorrect password');
     }
@@ -21,11 +23,11 @@ export default function LoginPage() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      background: '#f5f5f5',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      background: '#fff'
     }}>
       <h1>🔐 Enter Password</h1>
-      <form onSubmit={checkPassword} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <form onSubmit={checkPassword} style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '20px' }}>
         <input
           type="password"
           placeholder="Enter password"
@@ -33,9 +35,14 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           style={{ padding: '10px', fontSize: '16px' }}
         />
-        <button type="submit" style={{ padding: '10px', backgroundColor: 'hotpink', color: '#fff', border: 'none', borderRadius: '5px' }}>
-          Unlock
-        </button>
+        <button type="submit" style={{
+          padding: '10px 20px',
+          backgroundColor: 'hotpink',
+          border: 'none',
+          color: 'white',
+          fontSize: '16px',
+          cursor: 'pointer'
+        }}>Unlock</button>
       </form>
     </div>
   );
