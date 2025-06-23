@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/password.html",
+      "permanent": true
+    }
+  ]
+}
