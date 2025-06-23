@@ -5,15 +5,21 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const isAuth = localStorage.getItem('authorized');
+    const isAuth = typeof window !== 'undefined' && localStorage.getItem('authorized');
     if (isAuth !== 'true') {
       router.push('/login');
     }
   }, []);
 
   return (
-    <div>
-      <h1>🎉 Welcome to the Sorry Website!</h1>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      flexDirection: 'column'
+    }}>
+      <h1>🌸 Welcome to the Sorry Website!</h1>
     </div>
   );
 }
